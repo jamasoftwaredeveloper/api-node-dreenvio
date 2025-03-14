@@ -38,8 +38,6 @@ const createSpecialPrice = async (params) => {
 };
 
 const updateSpecialPriceById = async (_id, params) => {
-  console.log("id",_id);
-  console.log("params",params);
   const { special_price, start_date, end_date, is_active } = params;
   const specialPrice = await SpecialPrice.findByIdAndUpdate(
     _id,
@@ -69,10 +67,31 @@ const deleteSpecialPriceById = async (id) => {
   return true;
 };
 
+const validateSpecialPriceUser = async (user_id) => {
+  const specialPrices = await SpecialPrice.find({ user_id })
+    .populate('user_id', 'name lastName') // Solo traer 'name' y 'lastname' del usuario
+    .populate('product_id', 'name price') // Solo traer 'name' y 'price' del producto
+    .lean(); // Convierte el resultado en objetos JavaScript planos
+
+  if (!specialPrices.length) {
+    throw new Error('Precios especiales no encontrados para este usuario');
+  }
+
+  return specialPrices.map(({ product_id, user_id, ...rest }) => ({
+    ...rest,
+    product: product_id,
+    user: {
+      ...user_id,
+      fullName: `${user_id.name} ${user_id.lastName}`, // Concatenar name y lastName como fullName
+    }, // Renombramos 'product_id' a 'product'
+  }));
+};
+
 module.exports = {
   getAllSpecialPrices,
   createSpecialPrice,
   updateSpecialPriceById,
   findSpecialPriceById,
   deleteSpecialPriceById,
+  validateSpecialPriceUser
 };

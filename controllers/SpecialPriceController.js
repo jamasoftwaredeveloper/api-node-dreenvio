@@ -5,12 +5,10 @@ exports.getSpecialPrices = async (req, res) => {
     const specialPrices = await specialPriceService.getSpecialPrices();
     res.status(200).json(specialPrices);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: 'Error al obtener precios especiales',
-        error: error.message,
-      });
+    res.status(500).json({
+      message: 'Error al obtener precios especiales',
+      error: error.message,
+    });
   }
 };
 
@@ -59,6 +57,19 @@ exports.deleteSpecialPrice = async (req, res) => {
   try {
     const result = await specialPriceService.deleteSpecialPrice(id);
     res.status(204).send(result);
+  } catch (error) {
+    res
+      .status(error.message === 'Precio especial no encontrado' ? 404 : 500)
+      .json({ message: error.message });
+  }
+};
+
+exports.validateSpecialPriceUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await specialPriceService.validateSpecialPriceUser(id);
+
+    res.status(200).send(result);
   } catch (error) {
     res
       .status(error.message === 'Precio especial no encontrado' ? 404 : 500)

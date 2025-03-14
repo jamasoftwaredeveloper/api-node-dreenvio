@@ -1,5 +1,12 @@
 const express = require('express');
-const { createSpecialPrice, deleteSpecialPrice, getSpecialPrices, showSpecialPrice, updateSpecialPrice } = require('../controllers/SpecialPriceController');
+const {
+  createSpecialPrice,
+  deleteSpecialPrice,
+  getSpecialPrices,
+  showSpecialPrice,
+  updateSpecialPrice,
+  validateSpecialPriceUser,
+} = require('../controllers/SpecialPriceController');
 const router = express.Router();
 const { validateSpecialPrice } = require('../middlewares/validateSpecialPrice');
 
@@ -132,7 +139,11 @@ router.put('/update/:id', validateSpecialPrice.update, updateSpecialPrice);
  *       404:
  *         description: Precio especial no encontrado
  */
-router.get('/show/:id', validateSpecialPrice.findSpecialPrice, showSpecialPrice);
+router.get(
+  '/show/:id',
+  validateSpecialPrice.findSpecialPrice,
+  showSpecialPrice
+);
 
 /**
  * @swagger
@@ -154,5 +165,30 @@ router.get('/show/:id', validateSpecialPrice.findSpecialPrice, showSpecialPrice)
  *         description: Precio especial no encontrado
  */
 router.delete('/delete/:id', validateSpecialPrice.delete, deleteSpecialPrice);
+
+/**
+ * @swagger
+ * /api/v1/special-prices/validate-special-price/{id}:
+ *   get:
+ *     summary: Ver un precio especial existente
+ *     tags: [SpecialPrices]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del usuario a consultar
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Ver un precio especial exitosamente
+ *       404:
+ *         description: Precio especial no encontrado
+ */
+router.get(
+  '/validate-special-price/:id',
+  validateSpecialPrice.findSpecialPrice,
+  validateSpecialPriceUser
+);
 
 module.exports = router;

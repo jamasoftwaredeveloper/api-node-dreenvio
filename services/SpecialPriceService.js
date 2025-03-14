@@ -9,7 +9,10 @@ const createSpecialPrice = async (params) => {
 };
 
 const updateSpecialPrice = async (_id, params) => {
-  const specialPrice = await specialPriceRepository.updateSpecialPriceById(_id, params);
+  const specialPrice = await specialPriceRepository.updateSpecialPriceById(
+    _id,
+    params
+  );
   if (!specialPrice) {
     throw new Error('Precio especial no encontrado');
   }
@@ -32,10 +35,20 @@ const deleteSpecialPrice = async (id) => {
   return specialPrice;
 };
 
+const validateSpecialPriceUser = async (id) => {
+  const specialPrice =
+    await specialPriceRepository.validateSpecialPriceUser(id);
+  if (!specialPrice) {
+    throw new Error('El usuario no está asociado a ningun Precio especial');
+  }
+  return specialPrice;
+};
+
 export {
   getSpecialPrices,
   createSpecialPrice,
   updateSpecialPrice,
   showSpecialPrice,
   deleteSpecialPrice,
+  validateSpecialPriceUser
 };
