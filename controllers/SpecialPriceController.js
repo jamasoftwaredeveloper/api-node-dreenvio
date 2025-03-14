@@ -46,8 +46,8 @@ exports.deleteSpecialPrice = async (req, res) => {
   const { id } = req.params;
   
   try {
-    await specialPriceService.deleteSpecialPrice(id);
-    res.status(204).send();
+  const result= await specialPriceService.deleteSpecialPrice(id);
+    res.status(204).send(result);
   } catch (error) {
     res.status(error.message === 'Precio especial no encontrado' ? 404 : 500).json({ message: error.message });
   }

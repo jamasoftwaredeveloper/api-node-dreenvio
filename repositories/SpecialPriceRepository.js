@@ -26,8 +26,8 @@ const createSpecialPrice = async (params) => {
   });
 };
 
-const updateSpecialPrice = async (params) => {
-  const { _id, special_price, start_date, end_date, is_active } = params;
+const updateSpecialPriceById = async (_id, params) => {
+  const { special_price, start_date, end_date, is_active } = params;
   const specialPrice = await SpecialPrice.findByIdAndUpdate(
     _id,
     { special_price, start_date, end_date, is_active },
@@ -39,7 +39,7 @@ const updateSpecialPrice = async (params) => {
   return specialPrice;
 };
 
-const showSpecialPrice = async (id) => {
+const findSpecialPriceById = async (id) => {
   const specialPrice = await SpecialPrice.findById(id);
   if (!specialPrice) {
     throw new Error('Precio especial no encontrado');
@@ -47,17 +47,19 @@ const showSpecialPrice = async (id) => {
   return specialPrice;
 };
 
-const deleteSpecialPrice = async (id) => {
+const deleteSpecialPriceById = async (id) => {
   const specialPrice = await SpecialPrice.findByIdAndDelete(id);
+  
   if (!specialPrice) {
     throw new Error('Precio especial no encontrado');
   }
+  return true;
 };
 
 module.exports = {
   getAllSpecialPrices,
   createSpecialPrice,
-  updateSpecialPrice,
-  showSpecialPrice,
-  deleteSpecialPrice,
+  updateSpecialPriceById,
+  findSpecialPriceById,
+  deleteSpecialPriceById,
 };

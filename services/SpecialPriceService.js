@@ -29,6 +29,7 @@ const deleteSpecialPrice = async (id) => {
   if (!specialPrice) {
     throw new Error('Precio especial no encontrado');
   }
+  return specialPrice;
 };
 
 export {
