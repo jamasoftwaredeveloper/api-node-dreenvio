@@ -42,6 +42,7 @@ La API está diseñada para facilitar la gestión de precios especiales en una p
 
 Ubicarte en la ruta del proyecto, consola y ejecutar `node "node_modules/jest/bin/jest.js" "d:/Datos/Pruebas/drenvio/api-node-dreenvio/test/specialPrices/specialPrices.test.js" -t "API de precios especiales"`
 
+
 ## Justificación de Elecciones Técnicas
 
 - **Node.js**: Elegido por su eficiencia y capacidad para manejar aplicaciones de red escalables.
@@ -53,6 +54,8 @@ Ubicarte en la ruta del proyecto, consola y ejecutar `node "node_modules/jest/bi
 - **Validaciones**: Garantizan la integridad y consistencia de los datos.
 - **Middlewares**: Facilitan la gestión de peticiones y respuestas, mejorando la modularidad del código.
 - **Control de Log**: Permite el monitoreo y depuración de la aplicación.
+
+- **JavaScript**: Elegido por su amplia adopción y soporte en la comunidad, así como su flexibilidad y facilidad de uso. JavaScript permite un desarrollo rápido y es compatible con una gran cantidad de bibliotecas y frameworks, lo que facilita la integración y el desarrollo de nuevas funcionalidades.
 
 ## Descripción de la Estructura del Proyecto
 
