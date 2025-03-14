@@ -23,9 +23,9 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/users', userRoutes);
-app.use('/products', productRoutes);
-app.use('/special-prices', specialPriceRoutes);
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/products', productRoutes);
+app.use('/api/v1/special-prices', specialPriceRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;

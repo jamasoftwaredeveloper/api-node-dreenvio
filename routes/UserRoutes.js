@@ -11,7 +11,7 @@ const { validateUser } = require('../middlewares/validateUser');
 
 /**
  * @swagger
- * /users:
+ * /api/v1/users:
  *   get:
  *     summary: Obtiene una lista de usuarios
  *     tags: [Users]

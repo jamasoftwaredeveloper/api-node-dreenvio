@@ -12,7 +12,7 @@ const { validateSpecialPrice } = require('../middlewares/validateSpecialPrice');
 
 /**
  * @swagger
- * /special-prices:
+ * /api/v1/special-prices:
  *   get:
  *     summary: Obtiene una lista de precios especiales
  *     tags: [SpecialPrices]
@@ -24,7 +24,7 @@ router.get('/', validateSpecialPrice.listSpecialPrices, getSpecialPrices);
 
 /**
  * @swagger
- * /special-prices/create:
+ * /api/v1/special-prices/create:
  *   post:
  *     summary: Crea un nuevo precio especial
  *     tags: [SpecialPrices]
@@ -65,7 +65,7 @@ router.post('/create', validateSpecialPrice.create, createSpecialPrice);
 
 /**
  * @swagger
- * /special-prices/update/{id}:
+ * /api/v1/special-prices/update/{id}:
  *   put:
  *     summary: Actualiza un precio especial existente
  *     tags: [SpecialPrices]
@@ -115,7 +115,7 @@ router.put('/update/:id', validateSpecialPrice.update, updateSpecialPrice);
 
 /**
  * @swagger
- * /special-prices/show/{id}:
+ * /api/v1/special-prices/show/{id}:
  *   get:
  *     summary: Ver un precio especial existente
  *     tags: [SpecialPrices]
@@ -136,7 +136,7 @@ router.get('/show/:id', validateSpecialPrice.findSpecialPrice, showSpecialPrice)
 
 /**
  * @swagger
- * /special-prices/delete/{id}:
+ * /api/v1/special-prices/delete/{id}:
  *   delete:
  *     summary: Elimina un precio especial existente
  *     tags: [SpecialPrices]

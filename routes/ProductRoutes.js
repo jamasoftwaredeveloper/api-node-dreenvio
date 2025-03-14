@@ -13,7 +13,7 @@ import { validateProduct } from '../middlewares/validateProduct';
 
 /**
  * @swagger
- * /products:
+ * /api/v1/products:
  *   get:
  *     summary: Obtiene una lista de productos
  *     tags: [Products]
