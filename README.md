@@ -28,8 +28,9 @@ La API está diseñada para facilitar la gestión de precios especiales en una p
    ![Abrir consola](image.png)
    ![Ubicación del proyecto](image-1.png)
 4. Ejecutar `npm install` para instalar las dependencias.
-5. Para correr el proyecto, ejecutar `npm start`.
-6. Para correr las pruebas, ejecutar `npm test`.
+5. Recordar crear el archivo .env y tener la variable MONGO_URI, con la url de conexión de mongo
+6. Para correr el proyecto, ejecutar `npm start`.
+7. Para correr las pruebas, ejecutar `npm test`.
 
 ### Opción 2: Ejecutar con Docker
 
